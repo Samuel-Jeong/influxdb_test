@@ -1,0 +1,49 @@
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+logging:
+  config: classpath:logback-${spring.config.activate.on-profile}.xml
+
+server:
+  servlet:
+    session:
+      timeout: 10m
+      tracking-modes: cookie
+  port: 6666
+
+default:
+  id: ${random.uuid}
+  url: http://localhost:8086
+  token: Nh_XMpUEhIWTwQKPXURlokh6FXoPa0JmO1myuK7kIHWRt1XTIKs0Pdb9oRuN73z5JV8ydhpsQdOhWLFPuF_JWQ==
+  organization: sortielab
+  bucket: sortielab
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+logging:
+  config: classpath:logback-${spring.config.activate.on-profile}.xml
+
+server:
+  servlet:
+    session:
+      timeout: 10m
+      tracking-modes: cookie
+  port: 6666
+  address: 0.0.0.0
+
+default:
+  id: ${random.uuid}
+  url: http://localhost:8086
+  token: Nh_XMpUEhIWTwQKPXURlokh6FXoPa0JmO1myuK7kIHWRt1XTIKs0Pdb9oRuN73z5JV8ydhpsQdOhWLFPuF_JWQ==
+  organization: sortielab
+  bucket: sortielab
+
+---
